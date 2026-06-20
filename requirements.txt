@@ -4,3 +4,17 @@ langchain_core
 langchain
 streamlit
 python-dotenv
+bs4
+pypdf
+arxiv
+pymupdf
+wikipedia
+langchain-text-splitters
+langchain_huggingface
+chromadb
+sentence_transformers
+faiss-cpu
+langchain_chroma
+duckdb
+pandas
+langchain_groq
