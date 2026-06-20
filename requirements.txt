@@ -1,7 +1,7 @@
 langchain-community
 langchain-openai
 langchain_core
-langchain
+langchain==0.3.25
 streamlit
 python-dotenv
 bs4
@@ -18,3 +18,10 @@ langchain_chroma
 duckdb
 pandas
 langchain_groq
+mysql-connector-python
+SQLAlchemy
+validators==0.28.1
+youtube_transcript_api
+unstructured
+pytube
+numexpr
