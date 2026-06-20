@@ -19,7 +19,7 @@ def generate_response(question,api_key,llm,temperature,max_tokens):
     llm=ChatOpenAI(model=llm)
     output_parser=StrOutputParser()
     chain=prompt|llm|output_parser
-    answer=chain.invoke("{'question': question}")
+    answer=chain.invoke({'question': question})
     return answer
 
 st.title("This is Q&A OPENAI chatbot ")
