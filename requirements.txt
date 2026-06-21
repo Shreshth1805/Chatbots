@@ -6,7 +6,7 @@ streamlit
 python-dotenv
 bs4
 pypdf
-arxiv
+arxiv==1.4.8
 pymupdf
 wikipedia
 langchain-text-splitters
