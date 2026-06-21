@@ -3,7 +3,7 @@ from pathlib import Path
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_community.utilities import SQLDatabase
 from langchain.agents.agent_types import AgentType
-from langchain.callbacks import StreamlitCallbackHandler
+from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from sqlalchemy import create_engine
 import sqlite3
@@ -44,7 +44,7 @@ if not api_key:
     st.info("Please add the groq api key")
 
 ## LLM Model:
-llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant",streaming=True)
+llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.3-70b-versatile",streaming=True)
 
 @st.cache_resource(ttl="2h")
 def configure_db(db_uri,mysql_host=None,mysql_user=None,mysql_password=None,mysql_db=None):
@@ -86,6 +86,10 @@ if user_query:
 
     with st.chat_message("assistant"):
         streamlit_callback=StreamlitCallbackHandler(st.container())
-        response=agent.run(user_query,callbacks=[streamlit_callback])
-        st.session_state.messages.append({"role":"assistant","content":response})
-        st.write(response)
+        response = agent.invoke(
+            {"input": user_query},
+            {"callbacks": [streamlit_callback]}
+            )
+        answer = response["output"]
+        st.session_state.messages.append({"role":"assistant","content":answer})
+        st.write(answer)
