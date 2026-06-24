@@ -26,3 +26,6 @@ unstructured
 pytube
 numexpr
 pathlib
+pinecone
+pinecone-text
+pinecone-notebooks
